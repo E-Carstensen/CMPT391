@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace CMPT391Project
 {
@@ -49,15 +50,15 @@ namespace CMPT391Project
         {
             
             int returnedValue = -1; // Initilize sql response outside of try
-
+            //loads the connection string into sqlConn from the .config file
+            var sqlConn = ConfigurationManager.ConnectionStrings["myConnStr"].ConnectionString;
 
             // Default local host database with name CMPT391Database
-            using (SqlConnection conn = new SqlConnection("Data Source=(local);Initial Catalog=CMPT391Database;Integrated Security=True"))
+            using (SqlConnection conn = new SqlConnection(sqlConn))
             {
                 try
                 {
                     conn.Open();
-
                     // Using the check login procedure
                     using (SqlCommand cmd = new SqlCommand("check_login", conn))
                     {

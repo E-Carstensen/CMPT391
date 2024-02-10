@@ -1,11 +1,14 @@
+create database CMPT391Database
 
+use CMPT391Database
 create TABLE [Student] (
   [studentID] integer PRIMARY KEY,
   [fName] nvarchar(64),
   [lName] nvarchar(128),
   [phone] nvarchar(13),
   [email] nvarchar(128),
-  [password] nvarchar(128)
+  [password] nvarchar(128),
+  [active] nvarchar(8)
 )
 GO
 
@@ -29,7 +32,6 @@ GO
 CREATE TABLE [Course] (
   [courseID] integer PRIMARY KEY,
   [courseName] nvarchar(128),
-  [meetingTime] time,
   [departmentName] nvarchar(128)
 )
 GO
@@ -40,6 +42,7 @@ CREATE TABLE [Taken] (
   [secID] integer,
   [sem] nvarchar(32),
   [year] nvarchar(8),
+  [progress] integer
   PRIMARY KEY ([studentID], [courseID], [secID], [sem], [year])
 )
 GO
@@ -70,13 +73,14 @@ CREATE TABLE [Timeslot] (
 GO
 
 CREATE TABLE [Section] (
+  [courseID] integer,
   [secID] integer,
   [sem] nvarchar(32),
   [year] nvarchar(8),
   [cap] integer,
   [enrolled] integer,
   [timeslotID] integer,
-  PRIMARY KEY ([secID], [sem], [year])
+  PRIMARY KEY ([courseID], [secID], [sem], [year])
 )
 GO
 
@@ -84,9 +88,6 @@ ALTER TABLE [Course] ADD FOREIGN KEY ([departmentName]) REFERENCES [Department] 
 GO
 
 ALTER TABLE [Department] ADD FOREIGN KEY ([headID]) REFERENCES [Instructor] ([instructorId])
-GO
-
-ALTER TABLE [Instructor] ADD FOREIGN KEY ([dName]) REFERENCES [Department] ([dName])
 GO
 
 ALTER TABLE [preReq] ADD FOREIGN KEY ([courseID]) REFERENCES [Course] ([courseID])

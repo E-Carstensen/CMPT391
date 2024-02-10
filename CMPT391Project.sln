@@ -5,6 +5,13 @@ VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMPT391Project", "CMPT391Project\CMPT391Project.csproj", "{C3D75F96-BC46-48F2-90B5-AC6A0E2F8951}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{5E3F94CA-1DD3-4399-9A08-4A10421B01DB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{8519FAD5-7D45-482E-9DC0-939A8D13EC6D}"
+	ProjectSection(SolutionItems) = preProject
+		SolutionItems\Config\ConnectionStrings.config = SolutionItems\Config\ConnectionStrings.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,6 +25,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8519FAD5-7D45-482E-9DC0-939A8D13EC6D} = {5E3F94CA-1DD3-4399-9A08-4A10421B01DB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B2DF968D-EAA5-4079-817C-3DEEE7A15BB9}

@@ -1,4 +1,4 @@
-ALTER PROCEDURE check_login 
+CREATE PROCEDURE check_login 
     @username int,
     @password NVARCHAR(128)
 AS
