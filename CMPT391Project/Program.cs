@@ -8,6 +8,8 @@ namespace CMPT391Project
 {
     internal static class Program
     {
+        public static string globalString;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

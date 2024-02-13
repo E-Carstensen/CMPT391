@@ -24,8 +24,18 @@ values(007, 123,001, 'Fall', '2023',1)
 insert into dbo.Timeslot 
 values (002, 'Monday',' 10:30', '11:50')
 
+insert into dbo.Course
+values(124,'CMPT 491', 'CompSci')
+
+insert into dbo.Taken
+values(007, 124,001, 'Fall', '2023',1)
+
+insert into dbo.Teaches
+values(9, 123,001,'Fall', '2023')
+
 
 select C.courseID, c.courseName, s.secID, s.sem, s.year, t.day, t.startTime , t.endTime 
 from Course c, Section s, Timeslot t 
 where c.courseID = s.courseID AND s.timeslotID = t.timeslotID 
 
+exec show_enrolled_classes 7, 'fall', '2023'

@@ -31,6 +31,10 @@
             this.logInPanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.enrolledClasses1 = new CMPT391Project.EnrolledClasses();
+            this.classSearch1 = new CMPT391Project.ClassSearch();
+            this.cartPage1 = new CMPT391Project.CartPage();
+            this.profilePage1 = new CMPT391Project.ProfilePage();
             this.LoginLabel = new System.Windows.Forms.Label();
             this.loginButton = new System.Windows.Forms.Button();
             this.password = new System.Windows.Forms.TextBox();
@@ -45,10 +49,6 @@
             this.exitButton = new System.Windows.Forms.Button();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.passwordLabel = new System.Windows.Forms.Label();
-            this.classSearch1 = new CMPT391Project.ClassSearch();
-            this.cartPage1 = new CMPT391Project.CartPage();
-            this.profilePage1 = new CMPT391Project.ProfilePage();
-            this.enrolledClasses1 = new CMPT391Project.EnrolledClasses();
             this.logInPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -93,6 +93,40 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(808, 601);
             this.panel3.TabIndex = 6;
+            // 
+            // enrolledClasses1
+            // 
+            this.enrolledClasses1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.enrolledClasses1.Location = new System.Drawing.Point(0, 0);
+            this.enrolledClasses1.Name = "enrolledClasses1";
+            this.enrolledClasses1.Size = new System.Drawing.Size(808, 601);
+            this.enrolledClasses1.TabIndex = 9;
+            this.enrolledClasses1.Load += new System.EventHandler(this.enrolledClasses1_Load);
+            // 
+            // classSearch1
+            // 
+            this.classSearch1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.classSearch1.Location = new System.Drawing.Point(0, 0);
+            this.classSearch1.Name = "classSearch1";
+            this.classSearch1.Size = new System.Drawing.Size(808, 601);
+            this.classSearch1.TabIndex = 8;
+            // 
+            // cartPage1
+            // 
+            this.cartPage1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cartPage1.Location = new System.Drawing.Point(0, 0);
+            this.cartPage1.Name = "cartPage1";
+            this.cartPage1.Size = new System.Drawing.Size(808, 601);
+            this.cartPage1.TabIndex = 7;
+            this.cartPage1.Load += new System.EventHandler(this.cartPage1_Load);
+            // 
+            // profilePage1
+            // 
+            this.profilePage1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.profilePage1.Location = new System.Drawing.Point(0, 0);
+            this.profilePage1.Name = "profilePage1";
+            this.profilePage1.Size = new System.Drawing.Size(808, 601);
+            this.profilePage1.TabIndex = 6;
             // 
             // LoginLabel
             // 
@@ -257,39 +291,6 @@
             this.passwordLabel.Size = new System.Drawing.Size(53, 13);
             this.passwordLabel.TabIndex = 1;
             this.passwordLabel.Text = "Password";
-            // 
-            // classSearch1
-            // 
-            this.classSearch1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.classSearch1.Location = new System.Drawing.Point(0, 0);
-            this.classSearch1.Name = "classSearch1";
-            this.classSearch1.Size = new System.Drawing.Size(808, 601);
-            this.classSearch1.TabIndex = 8;
-            // 
-            // cartPage1
-            // 
-            this.cartPage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cartPage1.Location = new System.Drawing.Point(0, 0);
-            this.cartPage1.Name = "cartPage1";
-            this.cartPage1.Size = new System.Drawing.Size(808, 601);
-            this.cartPage1.TabIndex = 7;
-            this.cartPage1.Load += new System.EventHandler(this.cartPage1_Load);
-            // 
-            // profilePage1
-            // 
-            this.profilePage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.profilePage1.Location = new System.Drawing.Point(0, 0);
-            this.profilePage1.Name = "profilePage1";
-            this.profilePage1.Size = new System.Drawing.Size(808, 601);
-            this.profilePage1.TabIndex = 6;
-            // 
-            // enrolledClasses1
-            // 
-            this.enrolledClasses1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.enrolledClasses1.Location = new System.Drawing.Point(0, 0);
-            this.enrolledClasses1.Name = "enrolledClasses1";
-            this.enrolledClasses1.Size = new System.Drawing.Size(808, 601);
-            this.enrolledClasses1.TabIndex = 9;
             // 
             // LogIn
             // 

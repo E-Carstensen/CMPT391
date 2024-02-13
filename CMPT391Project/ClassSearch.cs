@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,9 @@ namespace CMPT391Project
 {
     public partial class ClassSearch : UserControl
     {
+        SqlDataAdapter adpt;
+        DataTable dt;
+
         public ClassSearch()
         {
             InitializeComponent();
@@ -28,6 +32,11 @@ namespace CMPT391Project
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
 
         }
