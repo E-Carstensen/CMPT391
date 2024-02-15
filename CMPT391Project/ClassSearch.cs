@@ -121,8 +121,92 @@ namespace CMPT391Project
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("ID is " + cID + " and the Sec is " + secID);
             int returnedValue = 1;
+
+            using (SqlConnection conn = new SqlConnection(sqlConn))
+            {
+                try
+                {
+                    conn.Open();
+                    // Using the check login procedure
+                    using (SqlCommand cmd = new SqlCommand("check_prereq", conn))
+                    {
+
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@studentID", Program.globalString);
+                        cmd.Parameters.AddWithValue("@courseID", cID);
+                        cmd.Parameters.AddWithValue("@sectionID", secID);
+                        cmd.Parameters.AddWithValue("@semester", sem);
+                        cmd.Parameters.AddWithValue("@year", yr);
+                        cmd.Parameters.AddWithValue("@timeslotID", tsID);
+
+                        SqlParameter returnedParam = new SqlParameter("@ReturnValue", SqlDbType.Int);
+                        returnedParam.Direction = ParameterDirection.ReturnValue;
+                        cmd.Parameters.Add("@ReturnValue", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
+
+
+
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+
+
+                        returnedValue = (int)cmd.Parameters["@ReturnValue"].Value;
+                        System.Console.WriteLine(returnedValue);
+                    }
+                    if (returnedValue < 0) { MessageBox.Show("Unable to Enroll in class. Please check Pre Requisite requirments are met"); return; }
+
+                }
+                catch (SqlException exception)
+                {
+                    System.Diagnostics.Debug.WriteLine(returnedValue.ToString());
+                    System.Diagnostics.Debug.WriteLine(exception.Message);
+                    MessageBox.Show(exception.Message);
+                }
+            }
+            returnedValue = 1;
+
+            using (SqlConnection conn = new SqlConnection(sqlConn))
+            {
+                try
+                {
+                    conn.Open();
+                    // Using the check login procedure
+                    using (SqlCommand cmd = new SqlCommand("check_time_conflicts", conn))
+                    {
+
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@studentID", Program.globalString);
+                        cmd.Parameters.AddWithValue("@courseID", cID);
+                        cmd.Parameters.AddWithValue("@sectionID", secID);
+                        cmd.Parameters.AddWithValue("@semester", sem);
+                        cmd.Parameters.AddWithValue("@year", yr);
+                        cmd.Parameters.AddWithValue("@timeslotID", tsID);
+
+                        SqlParameter returnedParam = new SqlParameter("@ReturnValue", SqlDbType.Int);
+                        returnedParam.Direction = ParameterDirection.ReturnValue;
+                        cmd.Parameters.Add("@ReturnValue", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
+
+
+
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+
+
+                        returnedValue = (int)cmd.Parameters["@ReturnValue"].Value;
+                        System.Console.WriteLine(returnedValue);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                if (returnedValue < 0) { MessageBox.Show("Unable to Enroll in class. Please check there are no time conflicts"); return; }
+
+            }
+            returnedValue = 1;
 
             using (SqlConnection conn = new SqlConnection(sqlConn))
             {
@@ -154,18 +238,13 @@ namespace CMPT391Project
 
                         returnedValue = (int)cmd.Parameters["@ReturnValue"].Value;
                         System.Console.WriteLine(returnedValue);
-                        if (returnedValue < 0) MessageBox.Show("Unable to Enroll in class. Please check cart for time conflicts or ensure Pre Requisite requirments are met");
-                        else if (returnedValue >= 0) MessageBox.Show("Successfully enrolled in class !");
+
                     }
                 }
-
-                catch (SqlException exception)
-                {
-                    System.Diagnostics.Debug.WriteLine(returnedValue.ToString());
-                    System.Diagnostics.Debug.WriteLine(exception.Message);
-                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
             }
-            
+            if (returnedValue < 0) { MessageBox.Show("Unable to Enroll in class. Please check there are no time conflicts"); return; }
+            MessageBox.Show("Added to cart");
         }
     }
     
